@@ -89,6 +89,9 @@ public class Jugueteria {
                         case 6:
                             proveedor_controller.listOfToysProveedor();
                             break;
+                        case 7:
+                            juguete_controller.toyPropertiesProveedor();
+                            break;
 
 
                     }

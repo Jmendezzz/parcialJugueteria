@@ -192,7 +192,7 @@ public class Juguete_impl implements Juguete_services {
     public void proveedorToys(Juguete_proveedor juguete, int cantidadJuguetesComprados,int precioVenta) {
         if(juguete != null){
             toyInventoryProveedor[toyInventoryProveedorPosition] = new Juguete_proveedor(juguete.toyName,cantidadJuguetesComprados,juguete.toyCategory,precioVenta,juguete.getProveedor());
-            toyInventoryPosition++;
+            toyInventoryProveedorPosition++;
             JOptionPane.showMessageDialog(null,"Detalles de la venta: \n" +
                     "Proveedor: "+ juguete.getProveedor().getNombreProveedor() + "\n"+
                     "Juguete adquirido: " + juguete.getToyName() + "\n"+
@@ -204,10 +204,11 @@ public class Juguete_impl implements Juguete_services {
 
     @Override
     public void toyPropertiesProveedor() {
+        System.out.println(toyInventoryProveedor[0].getToyName());
         if(toyInventoryProveedorPosition>0){
             String finalString="";
             for (int i = 0; i<toyInventoryProveedorPosition;i++){
-                finalString+= "Proveedor "+toyInventoryProveedor[i].getProveedor() +
+                finalString+= "Proveedor "+toyInventoryProveedor[i].getProveedor().getNombreProveedor() +
                         "Nombre juguete: "+toyInventoryProveedor[i].getToyName() +
                         "  Cantidades adquiridas: "+toyInventoryProveedor[i].getToyAmount() +
                         "  Precio de venta: "+toyInventoryProveedor[i].getToyPrice()+
