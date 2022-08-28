@@ -1,7 +1,5 @@
 package co.cue.edu.jugueteria.impl;
 
-import co.cue.edu.jugueteria.controllers.Empleado_controller;
-import co.cue.edu.jugueteria.controllers.Jugueteria_controller;
 import co.cue.edu.jugueteria.model.Empleado;
 import co.cue.edu.jugueteria.services.Empleado_services;
 

@@ -12,12 +12,12 @@ import javax.swing.*;
 
 public class Jugueteria {
     public static void main(String[] args) {
-        Jugueteria_controller jugueteria_controller = new Jugueteria_controller();
         Menu_controller menu_controller = new Menu_controller();
         Juguete_controller juguete_controller  = new Juguete_controller();
         Venta_controller venta_controller = new Venta_controller();
         Empleado_controller empleado_controller = new Empleado_controller();
         Cliente_controller cliente_controller = new Cliente_controller();
+        Proveedor_controller proveedor_controller  = new Proveedor_controller();
         int option=1;
         while (option!=0){
             option=menu_controller.mainMenu();
@@ -29,6 +29,9 @@ public class Jugueteria {
                             break;
                         case 2:
                             empleado_controller.createEmployee();
+                            break;
+                        case 3:
+                            cliente_controller.createClient();
                             break;
                     }break;
                 case 2:
@@ -60,15 +63,34 @@ public class Jugueteria {
                     break;
                 case 4:
                     int optionMenuNuevasFunciones = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opcion que desea realizar \n" +
-                            "1. Ver el cliente con mas compras"+
+                            "1. Ver el cliente con mas compras \n"+
                             "2. Empleado con mas ventas \n" +
-                            "3. Crear un proveedor"));
+                            "3. Crear un proveedor \n"+
+                            "4. Añadir lista de juguetes deseados de un proveedor \n"+
+                            "5. Comprar juguetes de un proveedor \n"+
+                            "6. Ver lista de juguetes de un proveedor \n"+
+                            "7. Ver lista de juguetes comprados"));
                     switch (optionMenuNuevasFunciones){
                         case 1:
                             venta_controller.bestClient();
                             break;
                         case 2:
                             venta_controller.bestEmployee();
+                            break;
+                        case 3:
+                            proveedor_controller.createProveedor();
+                            break;
+                        case 4:
+                            proveedor_controller.addInterestToys();
+                            break;
+                        case 5:
+                            juguete_controller.proveedorToys(proveedor_controller.services().getArrayProveedor(),proveedor_controller.services().getArrayPostionProveedor());
+                            break;
+                        case 6:
+                            proveedor_controller.listOfToysProveedor();
+                            break;
+
+
                     }
             }
         }

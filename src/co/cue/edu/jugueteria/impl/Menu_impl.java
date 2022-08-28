@@ -10,7 +10,7 @@ public class Menu_impl implements Menu_services {
         while (option<1 || option>4) {
             JOptionPane.showMessageDialog(null, "Ingrese una opción valida");
             option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opción que desea realizar \n"+
-                    "1. Crear juguete o empleado \n"+
+                    "1. Crear juguete / empleado / cliente \n"+
                     "2. Informe juguetes \n"+
                     "3. Registrar una venta \n"+
                     "4. Nuevas funcionalidades"));
@@ -20,11 +20,12 @@ public class Menu_impl implements Menu_services {
 
     @Override
     public int creationMenu(int option) {
-       while (option<1 || option>2){
+       while (option<1 || option>3){
            JOptionPane.showMessageDialog(null,"Ingrese una opción valida");
            option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opción que desea realizar \n"+
-                   "1. Crear un juguete "+
-                   "2. Crear un Empleado"));
+                   "1. Crear un juguete \n"+
+                   "2. Crear un Empleado \n"+
+                   "3. Crear un  cliente "));
        }
        return option;
     }

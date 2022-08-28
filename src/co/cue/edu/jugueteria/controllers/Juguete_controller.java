@@ -2,11 +2,14 @@ package co.cue.edu.jugueteria.controllers;
 
 import co.cue.edu.jugueteria.impl.Juguete_impl;
 import co.cue.edu.jugueteria.model.Juguete;
+import co.cue.edu.jugueteria.model.Juguete_proveedor;
+import co.cue.edu.jugueteria.model.Proveedor;
 
 import javax.swing.*;
 
 public class Juguete_controller {
     Juguete_impl juguete_impl = new Juguete_impl();
+    Proveedor_controller proveedor_controller = new Proveedor_controller();
 
     public Juguete_impl service() {
         return juguete_impl;
@@ -50,5 +53,14 @@ public class Juguete_controller {
         String toyName = JOptionPane.showInputDialog("Ingrese el nombre del juguete");
         int newAmount = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad que desea agregar"));
         juguete_impl.increaseStock(toyName,newAmount);
+    }
+    public void proveedorToys(Proveedor arrayProveedor[], int arrayProveedorPosition){
+        Juguete_proveedor juguete = proveedor_controller.searchToyProveedor(arrayProveedor,arrayProveedorPosition);
+        int cantidadJuguetesComprados = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de unidades que desea añadir al inventario del juguete "));
+        int precioVenta = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el precio de venta del nuevo juguete"));
+        juguete_impl.proveedorToys(juguete,cantidadJuguetesComprados,precioVenta);
+    }
+    public void toyPropertiesProveedor(){
+        juguete_impl.toyPropertiesProveedor();
     }
 }

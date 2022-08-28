@@ -28,35 +28,18 @@ public class Venta_impl implements Venta_services {
 
     }
 
-    @Override
-    public Cliente decisionClient(int option,Cliente clientArray[], int clientArrayPosition) {
-        while (option<1 || option>2) {
-            option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opción que desea realizar: \n+" +
-                    "1. Crear cliente \n" +
-                    "2. Cliente existente"));
-        }
-        switch (option){
-            case 1:
-                Cliente newClient = cliente_controller.createClient();
-                cliente_controller.services().addNewClientArray(newClient,clientArrayPosition+1);
-                return newClient;
-            case 2:
-                return cliente_controller.wantedClient(clientArray,clientArrayPosition);
-        }
-        return null;
-    }
+
 
     @Override
     public void bestClient() {
-        salesArray[0].getClient();
         if(salesArrayPosition>0){
             Cliente bestClient=salesArray[0].getClient();
             for (int i = 0; i<salesArrayPosition;i++){
                 if(salesArray[i].getClient().getBoughtToys()>bestClient.getBoughtToys()){
                     bestClient=salesArray[i].getClient();
                 }
-        }JOptionPane.showMessageDialog(null,"El cliente que mas comrpas ha realizado es: "+bestClient.getUserName()+
-            " con un total de "+bestClient.getBoughtToys() + "compras");
+        }JOptionPane.showMessageDialog(null,"El cliente que mas compras ha realizado es: "+bestClient.getUserName()+
+            " con un total de "+bestClient.getBoughtToys() + " compras");
 
         }else JOptionPane.showMessageDialog(null,"Aun no se ha resgitrado ninguna  venta");
     }

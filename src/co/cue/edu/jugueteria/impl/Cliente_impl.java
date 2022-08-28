@@ -7,11 +7,7 @@ import co.cue.edu.jugueteria.services.Cliente_services;
 public class Cliente_impl implements Cliente_services {
     Cliente[] clientArray = new Cliente[20];
     int clientArrayPosition = 0;
-    public void addNewClientArray(Cliente cliente, int clientArrayPosition){
 
-        clientArray[clientArrayPosition]=cliente;
-
-    }
     public void setClientArray(Cliente[] clientArray) {
         this.clientArray = clientArray;
     }
@@ -28,15 +24,14 @@ public class Cliente_impl implements Cliente_services {
         return clientArrayPosition;
     }
 
-    public Cliente createClient (String userName, String id, String phoneNumber, String adress, String birthdayDate, String emailAdress){
+    public void createClient (String userName, String id, String phoneNumber, String adress, String birthdayDate, String emailAdress){
         clientArray[clientArrayPosition]= new Cliente(userName,id,phoneNumber,adress,birthdayDate,emailAdress);
         clientArrayPosition++;
-        return new Cliente(userName,id,phoneNumber,adress,birthdayDate,emailAdress);
 
     }
 
     @Override
-    public Cliente wantedClient(String clientName, Cliente clientArray[], int clientArrayPosition) {
+    public Cliente searchClient(String clientName, Cliente clientArray[], int clientArrayPosition) {
         for (int i = 0 ; i<clientArrayPosition;i++){
             if (clientArray[i].getUserName().equalsIgnoreCase(clientName)){
                 return  clientArray[i];

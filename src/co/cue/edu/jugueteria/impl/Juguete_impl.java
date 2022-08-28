@@ -1,12 +1,15 @@
 package co.cue.edu.jugueteria.impl;
 import co.cue.edu.jugueteria.model.Categoria;
 import co.cue.edu.jugueteria.model.Juguete;
+import co.cue.edu.jugueteria.model.Juguete_proveedor;
 import co.cue.edu.jugueteria.services.Juguete_services;
 
 import javax.swing.*;
 
 public class Juguete_impl implements Juguete_services {
     public Juguete[] toyInventory = new Juguete[100];
+    public Juguete_proveedor[] toyInventoryProveedor = new Juguete_proveedor[100];
+    public int toyInventoryProveedorPosition = 0;
     public int toyInventoryPosition = 0;
 
 
@@ -184,6 +187,37 @@ public class Juguete_impl implements Juguete_services {
             JOptionPane.showMessageDialog(null,"El juguete ingresado no se encontró, intente nuevamente.");
         }else JOptionPane.showMessageDialog(null, "Unidades añadidas exitosamente!");
     }
+
+    @Override
+    public void proveedorToys(Juguete_proveedor juguete, int cantidadJuguetesComprados,int precioVenta) {
+        if(juguete != null){
+            toyInventoryProveedor[toyInventoryProveedorPosition] = new Juguete_proveedor(juguete.toyName,cantidadJuguetesComprados,juguete.toyCategory,precioVenta,juguete.getProveedor());
+            toyInventoryPosition++;
+            JOptionPane.showMessageDialog(null,"Detalles de la venta: \n" +
+                    "Proveedor: "+ juguete.getProveedor().getNombreProveedor() + "\n"+
+                    "Juguete adquirido: " + juguete.getToyName() + "\n"+
+                    "Precio total: " + juguete.getToyPrice()*cantidadJuguetesComprados + "\n"+
+                    "Días habiles para la entrega: "+juguete.getProveedor().getDiaPromesa());
+        }else JOptionPane.showMessageDialog(null,"Hubo un problema con el juguete. Intente nuevamente.");
+
+    }
+
+    @Override
+    public void toyPropertiesProveedor() {
+        if(toyInventoryProveedorPosition>0){
+            String finalString="";
+            for (int i = 0; i<toyInventoryProveedorPosition;i++){
+                finalString+= "Proveedor "+toyInventoryProveedor[i].getProveedor() +
+                        "Nombre juguete: "+toyInventoryProveedor[i].getToyName() +
+                        "  Cantidades adquiridas: "+toyInventoryProveedor[i].getToyAmount() +
+                        "  Precio de venta: "+toyInventoryProveedor[i].getToyPrice()+
+                "\n";
+
+            }
+            JOptionPane.showMessageDialog(null,finalString);
+        }else JOptionPane.showMessageDialog(null, "Aún no se han comprado juguetes a ningun proveedor");
+    }
+
     public Juguete[] getToyInventory() {
         return toyInventory;
     }

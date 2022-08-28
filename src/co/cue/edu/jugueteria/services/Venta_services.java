@@ -7,7 +7,6 @@ import co.cue.edu.jugueteria.model.Venta;
 
 public interface Venta_services {
     public void createSale(String saleDate, Empleado empleado, Cliente cliente, int totalSoldToys, Detalle_venta[] toysSold);
-    public Cliente decisionClient(int option,Cliente clientArray[], int clientArrayPosition);
     public void bestClient ();
     public void bestEmployee();
 

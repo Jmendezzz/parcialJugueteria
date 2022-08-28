@@ -9,14 +9,15 @@ public class Menu_controller {
     public int creationMenu(){
          int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opción que desea realizar \n"+
                  "1. Crear un juguete \n"+
-                 "2. Crear un Empleado" ));
+                 "2. Crear un Empleado \n"+
+                 "3. Crear cliente"));
          return menu_impl.creationMenu(option);
     }
     public int mainMenu(){
         int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la opción que desea realizar \n"+
                 "1. Crear juguete o empleado \n"+
                 "2. Informe juguetes / Inventario \n"+
-                "3. Registrar una venta" +
+                "3. Registrar una venta \n" +
                 "4. Nuevas funcionalidades"));
         return menu_impl.mainMenu(option);
     }

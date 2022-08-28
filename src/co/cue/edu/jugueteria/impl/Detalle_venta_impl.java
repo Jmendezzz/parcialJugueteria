@@ -47,7 +47,7 @@ public class Detalle_venta_impl implements Detalle_venta_services {
                     break;
                 }
             }
-            if (band == false ){
+            if (!band){
                 break;
             }
             int soldAmount= Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad vendida"));
@@ -64,7 +64,7 @@ public class Detalle_venta_impl implements Detalle_venta_services {
     public void printDetails(Venta venta) {
         JOptionPane.showMessageDialog(null, "Detalles de la venta: \n"+
                 "Atendió: "+ venta.getEmployee().getUserName() + "\n"
-        + "Cliente: "+ venta.getClient().getUserName() + "\n"+
+        + "Cliente: "+ venta.getClient().getUserName() + "\n" +
             "Fecha: "+venta.getSaleDate());
     }
 }
